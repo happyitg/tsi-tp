@@ -8,6 +8,7 @@
 
 namespace MoviesData\Model;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -33,6 +34,22 @@ class Skill
      * @ORM\Column(name="name", type="string", length=50)
      */
     private $name;
+
+    /**
+     * @var int
+     *
+     * Many skills can be linked t many movies for many people
+     * @ORM\OneToMany(targetEntity="MoviePeopleSkill", mappedBy="skill")
+     */
+    private $moviePeopleSkill ;
+
+    /**
+     * Skill constructor.
+     */
+    public function __construct()
+    {
+        $this->moviePeopleSkill = new ArrayCollection() ;
+    }
 
     /**
      * @return int

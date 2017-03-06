@@ -8,6 +8,7 @@
 
 namespace MoviesData\Model;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -68,6 +69,111 @@ class Movie
      * @ORM\Column(name="modification_date", type="datetime", nullable=true)
      */
     private $modificationDate ;
+
+
+    /**
+     * @var int
+     * @ORM\ManyToOne(targetEntity="MovieType")
+     * @ORM\JoinColumn(name="movie_type_id", referencedColumnName="id")
+     */
+    private $movieType ;
+
+    /**
+     * @var int
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="movie")
+     */
+    private $comments;
+
+    /**
+     * @var int
+     *
+     * Many movies have many peoples for many skills
+     *
+     * @ORM\OneToMany(targetEntity="MoviePeopleSkill", mappedBy="movie")
+     */
+    private $moviePeopleSkill;
+
+    /**
+     * @var int
+     *
+     * @ORM\OneToOne(targetEntity="Poster", mappedBy="id")
+     *
+     */
+    private $poster ;
+
+    /**
+     * Movie constructor.
+     */
+    public function __construct()
+    {
+        $this->comments = new ArrayCollection();
+        $this->moviePeopleSkill = new ArrayCollection();
+    }
+
+    /**
+     * @return int
+     */
+    public function getComments(): int
+    {
+        return $this->comments;
+    }
+
+    /**
+     * @param int $comments
+     */
+    public function setComments(int $comments)
+    {
+        $this->comments = $comments;
+    }
+
+    /**
+     * @return int
+     */
+    public function getMoviePeopleSkill(): int
+    {
+        return $this->moviePeopleSkill;
+    }
+
+    /**
+     * @param int $moviePeopleSkill
+     */
+    public function setMoviePeopleSkill(int $moviePeopleSkill)
+    {
+        $this->moviePeopleSkill = $moviePeopleSkill;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPoster(): int
+    {
+        return $this->poster;
+    }
+
+    /**
+     * @param int $poster
+     */
+    public function setPoster(int $poster)
+    {
+        $this->poster = $poster;
+    }
+
+
+    /**
+     * @return int
+     */
+    public function getMovieType(): int
+    {
+        return $this->movieType;
+    }
+
+    /**
+     * @param int $movieType
+     */
+    public function setMovieType(int $movieType = null)
+    {
+        $this->movieType = $movieType;
+    }
 
     /**
      * @return int

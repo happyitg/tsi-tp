@@ -41,6 +41,32 @@ class Comment
     private $text;
 
     /**
+     * @var int
+     *
+     * @ORM\ManyToOne(targetEntity="Movie", inversedBy="comments")
+     * @ORM\JoinColumn(name="movie_id", referencedColumnName="id")
+     */
+    private $movie;
+
+    /**
+     * @return int
+     */
+    public function getMovie(): int
+    {
+        return $this->movie;
+    }
+
+    /**
+     * @param int $movie
+     */
+    public function setMovie(int $movie)
+    {
+        $this->movie = $movie;
+    }
+
+
+
+    /**
      * @return int
      */
     public function getId()

@@ -9,6 +9,7 @@
 
 namespace MoviesData\Model ;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -55,6 +56,42 @@ class People
      * @ORM\Column(name="gender", type="string")
      */
     private $gender;
+
+    /**
+     * @var int
+     *
+     * many peoples are in many movies for one of his skills
+     * @ORM\OneToMany(targetEntity="MoviePeopleSkill", mappedBy="people")
+     */
+    private $moviePeopleSkill ;
+
+    /**
+     * @var int
+     *
+     * Many People have many skills
+     * @ORM\ManyToMany(targetEntity="Skill")
+     * @ORM\JoinTable(
+     *     name="people_skill",
+     *     joinColumns=
+     *     {
+     *          @ORM\JoinColumn(name="people_id", referencedColumnName="id")
+     *     },
+     *     inverseJoinColumns={
+     *          @ORM\JoinColumn(name="skill_id", referencedColumnName="id", unique=true)
+     *     }
+     * )
+     */
+    private $skills;
+
+    /**
+     * People constructor.
+     */
+    public function __construct()
+    {
+        $this->moviePeopleSkill = new ArrayCollection();
+        $this->skills = new ArrayCollection();
+
+    }
 
     /**
      * @return int
