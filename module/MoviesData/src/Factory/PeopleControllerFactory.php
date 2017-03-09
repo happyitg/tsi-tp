@@ -18,6 +18,12 @@ use Zend\ServiceManager\Factory\FactoryInterface;
 
 class PeopleControllerFactory implements FactoryInterface
 {
+    /**
+     * @param ContainerInterface $container
+     * @param string $requestedName
+     * @param array|null $options
+     * @return PeopleController
+     */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
         /** @var  $peopleService */

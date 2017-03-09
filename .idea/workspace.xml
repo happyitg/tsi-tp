@@ -3,8 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="2c82901b-4206-4123-8dee-c64b3c53519e" name="Default" comment="">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/DoctrineORMModule/Proxy/__CG__MoviesDataModelMovie.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/DoctrineORMModule/Proxy/__CG__MoviesDataModelMovieType.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/DoctrineORMModule/Proxy/__CG__MoviesDataModelSkill.php" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/module/MoviesData/src/Factory/PeopleFieldsetFactory.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/module/MoviesData/src/Factory/PeopleServiceFactory.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/module/MoviesData/src/Form/AddPeopleForm.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/module/MoviesData/src/Form/EditPeopleForm.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/module/MoviesData/src/Form/Fieldset/PeopleFieldset.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/module/MoviesData/src/Service/PeopleInterface.php" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/module/MoviesData/view/movies-data/people/add.phtml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/module/MoviesData/view/movies-data/people/index.phtml" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/module/MoviesData/src/Controller/CommentController.php" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/module/MoviesData/src/Controller/MovieController.php" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/module/MoviesData/src/RepositoryInterface/MovieDataRepositoryInterface.php" afterPath="" />
@@ -55,7 +64,7 @@
       <file leaf-file-name="PeopleController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/module/MoviesData/src/Controller/PeopleController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
+            <state relative-caret-position="-147">
               <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
               <folding>
                 <element signature="e#7#90#0#PHP" expanded="true" />
@@ -79,18 +88,8 @@
       <file leaf-file-name="PeopleControllerFactory.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/module/MoviesData/src/Factory/PeopleControllerFactory.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="31" column="83" lean-forward="false" selection-start-line="31" selection-start-column="83" selection-end-line="31" selection-end-column="83" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Radio.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vendor/zendframework/zend-form/src/Element/Radio.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="19" column="7" lean-forward="true" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
+            <state relative-caret-position="340">
+              <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -136,17 +135,27 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="module.config.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="module.config.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/module/MoviesData/config/module.config.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="53" column="8" lean-forward="true" selection-start-line="53" selection-start-column="8" selection-end-line="53" selection-end-column="8" />
+            <state relative-caret-position="529">
+              <caret line="77" column="10" lean-forward="true" selection-start-line="77" selection-start-column="10" selection-end-line="77" selection-end-column="10" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PeopleFieldsetFactory.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="FormElementManagerFactory.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vendor/zendframework/zend-form/src/FormElementManagerFactory.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="14" column="6" lean-forward="false" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PeopleFieldsetFactory.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/module/MoviesData/src/Factory/PeopleFieldsetFactory.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="17">
@@ -194,7 +203,6 @@
         <option value="$PROJECT_DIR$/module/MoviesData/src/Repository/CommentRepository.php" />
         <option value="$PROJECT_DIR$/config/modules.config.php" />
         <option value="$PROJECT_DIR$/module/MoviesData/src/Service/CrudInterface.php" />
-        <option value="$PROJECT_DIR$/module/MoviesData/config/module.config.php" />
         <option value="$PROJECT_DIR$/module/MoviesData/src/Factory/PeopleServiceFactory.php" />
         <option value="$PROJECT_DIR$/module/MoviesData/src/Service/PeopleInterface.php" />
         <option value="$PROJECT_DIR$/module/MoviesData/src/Service/PeopleService.php" />
@@ -208,10 +216,11 @@
         <option value="$PROJECT_DIR$/module/MoviesData/src/Form/Fieldset/PeopleFieldset.php" />
         <option value="$PROJECT_DIR$/module/MoviesData/src/Form/AddPeopleForm.php" />
         <option value="$PROJECT_DIR$/module/MoviesData/view/movies-data/people/index.phtml" />
-        <option value="$PROJECT_DIR$/module/MoviesData/src/Factory/PeopleControllerFactory.php" />
         <option value="$PROJECT_DIR$/module/MoviesData/view/movies-data/people/add.phtml" />
         <option value="$PROJECT_DIR$/module/MoviesData/src/Controller/PeopleController.php" />
         <option value="$PROJECT_DIR$/module/MoviesData/src/Factory/PeopleFieldsetFactory.php" />
+        <option value="$PROJECT_DIR$/module/MoviesData/config/module.config.php" />
+        <option value="$PROJECT_DIR$/module/MoviesData/src/Factory/PeopleControllerFactory.php" />
       </list>
     </option>
   </component>
@@ -941,7 +950,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../tsi-getting-start" />
     <property name="js.eslint.eslintPackage" value="" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
-    <property name="SearchEverywhereHistoryKey" value="AbstractQuery&#9;FILE&#9;file://C:/Users/kevin_n/Development/tsi-tp/vendor/doctrine/orm/lib/Doctrine/ORM/AbstractQuery.php&#10;getOneor&#9;null&#9;null&#10;getOne&#9;null&#9;null" />
+    <property name="SearchEverywhereHistoryKey" value="FormElementManager&#9;null&#9;null&#10;AbstractQuery&#9;FILE&#9;file://C:/Users/kevin_n/Development/tsi-tp/vendor/doctrine/orm/lib/Doctrine/ORM/AbstractQuery.php&#10;getOneor&#9;null&#9;null&#10;getOne&#9;null&#9;null" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -1026,12 +1035,12 @@
       <option name="presentableId" value="Default" />
       <updated>1488799099672</updated>
       <workItem from="1488799101673" duration="33691000" />
-      <workItem from="1488891687051" duration="15328000" />
+      <workItem from="1488891687051" duration="15659000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49019000" />
+    <option name="totallyTimeSpent" value="49350000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -1067,13 +1076,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/vendor/doctrine/orm/lib/Doctrine/ORM/Repository/RepositoryFactory.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="29" column="10" lean-forward="false" selection-start-line="29" selection-start-column="10" selection-end-line="29" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/module/MoviesData/src/RepositoryInterface/RepositoryInterface.php" />
     <entry file="file://$PROJECT_DIR$/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/OneToOne.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -1381,14 +1383,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/module/MoviesData/src/Factory/PeopleControllerFactory.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="31" column="83" lean-forward="false" selection-start-line="31" selection-start-column="83" selection-end-line="31" selection-end-column="83" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/module/MoviesData/view/movies-data/people/index.phtml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -1413,16 +1407,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/module/MoviesData/src/Controller/PeopleController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding>
-            <element signature="e#7#90#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/module/MoviesData/src/Form/EditPeopleForm.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -1433,10 +1417,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/module/MoviesData/config/module.config.php">
+    <entry file="file://$PROJECT_DIR$/module/MoviesData/src/Controller/PeopleController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="53" column="8" lean-forward="true" selection-start-line="53" selection-start-column="8" selection-end-line="53" selection-end-column="8" />
+        <state relative-caret-position="-147">
+          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding>
+            <element signature="e#7#90#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/module/MoviesData/src/Factory/PeopleControllerFactory.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1448,6 +1442,22 @@
           <folding>
             <element signature="e#123#154#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/zendframework/zend-form/src/FormElementManagerFactory.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="14" column="6" lean-forward="false" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/module/MoviesData/config/module.config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="529">
+          <caret line="77" column="10" lean-forward="true" selection-start-line="77" selection-start-column="10" selection-end-line="77" selection-end-column="10" />
+          <folding />
         </state>
       </provider>
     </entry>

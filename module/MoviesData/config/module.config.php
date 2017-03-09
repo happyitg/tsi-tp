@@ -16,7 +16,9 @@ use MoviesData\Controller\MovieController;
 use MoviesData\Controller\PeopleController;
 use MoviesData\Factory\ActorControllerFactory;
 use MoviesData\Factory\PeopleControllerFactory;
+use MoviesData\Factory\PeopleFieldsetFactory;
 use MoviesData\Factory\PeopleServiceFactory;
+use MoviesData\Form\Fieldset\PeopleFieldset;
 use MoviesData\Service\PeopleService;
 use Zend\Router\Http\Segment;
 
@@ -72,7 +74,7 @@ return [
 
     'form_elements' => [
         'factories' => [
-
+            PeopleFieldset::class => PeopleFieldsetFactory::class,
         ],
     ],
 
