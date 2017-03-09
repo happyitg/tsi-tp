@@ -10,21 +10,25 @@
 namespace MoviesData\Repository ;
 
 use Doctrine\ORM\EntityRepository;
-use MoviesData\Model\People;
+use Doctrine\ORM\Query\Expr;
 
 class PeopleRepository extends EntityRepository
 {
     /**
-     * @return People[]
+     * @return mixed
      */
     public function getAll()
     {
 
-        $query = $this->createQueryBuilder('people')
+        return $this->createQueryBuilder('p')
+            ->leftJoin('p.skills', 's')
+            ->addSelect('s')
+            ->leftJoin('p.moviePeopleSkill', 'mps')
+            ->addSelect('mps')
+            ->leftJoin('mps.movie', 'm')
+            ->addSelect('m')
             ->getQuery()
-            ->getResult();
-
-        return $query ;
+            ->getResult() ;
 
     }
 

@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Class Skill
- * @package MoviesData\Model
+ * @package moviesdata\Model
  * @ORM\Entity
  * @ORM\Table(name="skill")
  */

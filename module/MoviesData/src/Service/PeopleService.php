@@ -12,9 +12,9 @@ namespace MoviesData\Service ;
 use Doctrine\ORM\EntityManager;
 use MoviesData\Model\People;
 use MoviesData\Repository\PeopleRepository;
-use MoviesData\ServiceInterface\CrudInterface;
+use Zend\Filter\Boolean;
 
-class PeopleService implements CrudInterface
+class PeopleService implements PeopleInterface
 {
     /**
      * @var EntityManager $entityManager
@@ -42,18 +42,22 @@ class PeopleService implements CrudInterface
      * @param People $people
      * @return People
      */
-    public function insert($people)
+    public function insert(People $people): People
     {
-        /** add a Actor into the Unit Of Work */
+        /** add a people into the Unit Of Work */
         $this->entityManager->persist($people);
 
         $this->entityManager->flush();
 
-        /** in this step, the object Actor has been passed by the unit Of Work and put it into the database */
+        /** in this step, the object people has been passed by the unit Of Work and put it into the database */
         return $people ;
     }
 
-    public function delete($people)
+    /**
+     * @param People $people
+     * @return bool
+     */
+    public function delete(People $people): bool
     {
         $this->entityManager->remove($people);
 
@@ -62,7 +66,7 @@ class PeopleService implements CrudInterface
         return true ;
     }
 
-    public function update($people)
+    public function update(People $people): People
     {
         $this->entityManager->flush();
 
@@ -79,10 +83,11 @@ class PeopleService implements CrudInterface
     }
 
     /**
-     * @param $objectId
-     * @return array
+     * @param int $objectId
+     * @return mixed
+     *
      */
-    public function selectOne($objectId)
+    public function selectOne(int $objectId)
     {
         return $this->peopleRepository->getOneById($objectId);
     }

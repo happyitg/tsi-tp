@@ -1,0 +1,55 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: kevin_n
+ * Date: 07/03/2017
+ * Time: 10:58
+ */
+
+namespace MoviesData\Form;
+
+
+use MoviesData\Form\Fieldset\PeopleFieldset;
+use Zend\Form\Element\Submit;
+use Zend\Form\Form;
+
+class AddPeopleForm extends Form
+{
+    public function init(){
+
+        $this->setUseAsBaseFieldset(true);
+
+        $this->add(
+            [
+                'name' => 'people',
+                'type' => PeopleFieldset::class,
+                'options' => [
+                    'use_as_base_fieldset' => true,
+                ],
+
+            ]
+        );
+
+        $this->setValidationGroup(
+            [
+                'first_name',
+                'last_name',
+                'birth_date',
+                'gender',
+            ]
+        );
+
+        $this->add(
+            [
+                'name' => 'submit',
+                'type' => Submit::class,
+                'attributes' => [
+                    'value' => 'Add an Artist',
+                    'id'    => 'submitaction',
+                ],
+            ]
+        );
+
+
+    }
+}

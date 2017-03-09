@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Class MovieType
- * @package MoviesData\Model
+ * @package moviesdata\Model
  * @ORM\Entity
  * @ORM\Table(name="movie_type")
  */

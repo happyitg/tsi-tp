@@ -8,81 +8,70 @@
 
 namespace MoviesData\Model;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Class MoviePeopleSkill
- * @package MoviesData\Model
+ * @package moviesdata\Model
  * @ORM\Entity
  * @ORM\Table(name="movie_people_skill")
  */
 class MoviePeopleSkill
 {
+
     /**
      * @var int
      *
      * @ORM\Id
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id ;
-    /**
-     * @var int
-     *
-     * @ORM\ManyToOne(targetEntity="Movie", inversedBy="id")
+     * @ORM\ManyToOne(targetEntity="Movie", inversedBy="moviePeopleSkill")
      */
     private $movie;
 
     /**
      * @var int
      *
-     * @ORM\ManyToOne(targetEntity="People", inversedBy="id")
+     * @ORM\Id
+     * @ORM\ManyToOne(targetEntity="People", inversedBy="moviePeopleSkill")
      */
     private $people;
 
     /**
      * @var int
      *
-     * @ORM\ManyToOne(targetEntity="Skill", inversedBy="id")
+     * @ORM\Id
+     * @ORM\ManyToOne(targetEntity="Skill", inversedBy="moviePeopleSkill")
      */
     private $skill;
 
-    /**
-     * @return int
-     */
-    public function getId(): int
+
+    public function __construct()
     {
-        return $this->id;
+        $this->people = new ArrayCollection();
+        $this->skill = new ArrayCollection();
+        $this->movie = new ArrayCollection();
     }
 
     /**
-     * @param int $id
+     * @return ArrayCollection|int
      */
-    public function setId(int $id)
-    {
-        $this->id = $id;
-    }
-
-    /**
-     * @return int
-     */
-    public function getMovie(): int
+    public function getMovie()
     {
         return $this->movie;
     }
 
     /**
-     * @param int $movie
+     * @param $movie
      */
-    public function setMovie(int $movie)
+    public function setMovie($movie)
     {
         $this->movie = $movie;
     }
 
     /**
-     * @return int
+     * @return ArrayCollection|int
      */
-    public function getPeople(): int
+    public function getPeople()
     {
         return $this->people;
     }
@@ -90,15 +79,15 @@ class MoviePeopleSkill
     /**
      * @param int $people
      */
-    public function setPeople(int $people)
+    public function setPeople($people)
     {
         $this->people = $people;
     }
 
     /**
-     * @return int
+     * @return ArrayCollection|int
      */
-    public function getSkill(): int
+    public function getSkill()
     {
         return $this->skill;
     }

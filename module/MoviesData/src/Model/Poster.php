@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Class Poster
- * @package MoviesData\Model
+ * @package moviesdata\Model
  * @ORM\Entity
  * @ORM\Table(name="poster")
  */
@@ -37,9 +37,59 @@ class Poster
     /**
      * @var int
      *
-     * @ORM\OneToOne(targetEntity="Movie", inversedBy="id")
-     * @ORM\JoinColumn(name="movie_id", referencedColumnName="id")
+     * One poster has one movie
+     * @ORM\OneToOne(targetEntity="Movie", inversedBy="poster")
      */
     private $movie;
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUrl(): string
+    {
+        return $this->url;
+    }
+
+    /**
+     * @param string $url
+     */
+    public function setUrl(string $url)
+    {
+        $this->url = $url;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMovie()
+    {
+        return $this->movie;
+    }
+
+    /**
+     * @param int $movie
+     */
+    public function setMovie(int $movie = null)
+    {
+        $this->movie = $movie;
+    }
+
+
 
 }

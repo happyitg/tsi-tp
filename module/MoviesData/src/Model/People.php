@@ -13,8 +13,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class MoviesData
- * @package MoviesData\Model
+ * Class moviesdata
+ * @package moviesdata\Model
  * @ORM\Entity(repositoryClass="MoviesData\Repository\PeopleRepository")
  * @ORM\Table(name="people")
  */
@@ -68,7 +68,7 @@ class People
     /**
      * @var int
      *
-     * Many People have many skills
+     * Many people have many skills
      * @ORM\ManyToMany(targetEntity="Skill")
      * @ORM\JoinTable(
      *     name="people_skill",
@@ -84,7 +84,7 @@ class People
     private $skills;
 
     /**
-     * People constructor.
+     * people constructor.
      */
     public function __construct()
     {
@@ -92,6 +92,40 @@ class People
         $this->skills = new ArrayCollection();
 
     }
+
+    /**
+     * @return ArrayCollection|int
+     */
+    public function getMoviePeopleSkill()
+    {
+        return $this->moviePeopleSkill;
+    }
+
+    /**
+     * @param $moviePeopleSkill
+     */
+    public function setMoviePeopleSkill($moviePeopleSkill)
+    {
+        $this->moviePeopleSkill = $moviePeopleSkill;
+    }
+
+    /**
+     * @return ArrayCollection|int
+     */
+    public function getSkills()
+    {
+        return $this->skills;
+    }
+
+    /**
+     * @param $skills
+     */
+    public function setSkills($skills)
+    {
+        $this->skills = $skills;
+    }
+
+
 
     /**
      * @return int

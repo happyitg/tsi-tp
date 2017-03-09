@@ -10,9 +10,8 @@ namespace MoviesData\Repository;
 
 
 use Doctrine\ORM\EntityRepository;
-use MoviesData\RepositoryInterface\MovieDataRepositoryInterface;
 
-class CommentRepository extends EntityRepository implements MovieDataRepositoryInterface
+class CommentRepository extends EntityRepository
 {
 
     public function getAll()

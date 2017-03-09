@@ -1,0 +1,54 @@
+<?php
+
+$pageTitle = "People page";
+$this->headTitle($pageTitle);
+?>
+<h1><?= $this->escapeHtml($pageTitle);?></h1>
+
+<a href="<?= $this->url('people',['action' => 'add'])?>">Add one people</a>
+<?php foreach ($this->all_people as $person){?>
+    <?php /** @var \MoviesData\Model\People $person */ ?>
+    <h2><?= $this->escapeHtml($person->getFirstName())?> <?= $this->escapeHtml($person->getLastName())?></h2>
+
+
+    <h4>Informations :</h4>
+    <ul>
+        <li>
+            Birth Date : <?= $this->escapeHtml($person->getBirthDate()->format('Y-m-d'))?>
+        </li>
+        <li>
+            Gender : <?= $this->escapeHtml($person->getGender())?>
+        </li>
+    </ul>
+    <h4>Skill acquired : </h4>
+    <?php foreach ($person->getSkills() as $skill){ ?>
+        <?php /** @var \MoviesData\Model\Skill $skill */ ?>
+    <ul>
+        <li>
+            <?= $this->escapeHtml($skill->getName())?>
+        </li>
+    </ul>
+    <?php
+    }
+    ?>
+    <h4>Movies he was part of : </h4>
+    <?php foreach ($person->getMoviePeopleSkill() as $moviePeopleSkill){
+            /** @var \MoviesData\Model\MoviePeopleSkill $moviePeopleSkill */
+            /** @var \MoviesData\Model\Movie $movie */
+            $movie = $moviePeopleSkill->getMovie();
+            /** @var \MoviesData\Model\Skill $skill */
+            $skill = $moviePeopleSkill->getSkill();
+        ?>
+    <ul>
+        <li>
+           "<?= $this->escapeHtml($movie->getTitle()) ?>" as <?= $this->escapeHtml($skill->getName()) ?>
+
+        </li>
+    </ul>
+    <?php
+        }
+
+?>
+<?php
+}
+?>

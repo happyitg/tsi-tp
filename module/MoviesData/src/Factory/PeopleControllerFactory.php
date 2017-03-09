@@ -10,16 +10,26 @@
 namespace MoviesData\Factory ;
 
 use Interop\Container\ContainerInterface;
-use Interop\Container\Exception\ContainerException;
-use Zend\ServiceManager\Exception\ServiceNotCreatedException;
-use Zend\ServiceManager\Exception\ServiceNotFoundException;
+use MoviesData\Controller\PeopleController;
+use MoviesData\Form\AddPeopleForm;
+use MoviesData\Form\EditPeopleForm;
+use MoviesData\Service\PeopleService;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
 class PeopleControllerFactory implements FactoryInterface
 {
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        // TODO: Implement __invoke() method.
+        /** @var  $peopleService */
+        $peopleService = $container->get(PeopleService::class);
+
+        /** @var  $addPeopleForm */
+        $addPeopleForm = $container->get('FormElementManager')->get(AddPeopleForm::class);
+
+        /** @var  $editPeopleForm */
+        $editPeopleForm = $container->get('FormElementManager')->get(EditPeopleForm::class);
+
+        return new PeopleController($peopleService, $addPeopleForm, $editPeopleForm);
     }
 
 }

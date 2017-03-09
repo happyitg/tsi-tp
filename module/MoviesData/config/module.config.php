@@ -13,7 +13,11 @@ use MoviesData\Controller\ActorController;
 use MoviesData\Controller\CommentController;
 use MoviesData\Controller\DirectorController;
 use MoviesData\Controller\MovieController;
+use MoviesData\Controller\PeopleController;
 use MoviesData\Factory\ActorControllerFactory;
+use MoviesData\Factory\PeopleControllerFactory;
+use MoviesData\Factory\PeopleServiceFactory;
+use MoviesData\Service\PeopleService;
 use Zend\Router\Http\Segment;
 
 return [
@@ -35,68 +39,27 @@ return [
 
     'router' => [
         'routes' => [
-            'actor' => [
+            'people' => [
                 'type'    => Segment::class,
                 'options' => [
-                    'route'       => '/actor[/:action[/:id]]',
+                    'route'       => '/people[/:action[/:id]]',
                     'constraints' => [
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'id'     => '[0-9]+',
                     ],
                     'defaults' => [
-                        'controller' => ActorController::class,
+                        'controller' => PeopleController::class,
                         'action' => 'index',
                     ],
                 ],
             ],
-            'director' => [
-                'type'    => Segment::class,
-                'options' => [
-                    'route'       => '/director[/:action[/:id]]',
-                    'constraints' => [
-                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                        'id'     => '[0-9]+',
-                    ],
-                    'defaults' => [
-                        'controller' => DirectorController::class,
-                        'action' => 'index',
-                    ],
-                ],
-            ],
-            'movie' => [
-                'type'    => Segment::class,
-                'options' => [
-                    'route'       => '/movie[/:action[/:id]]',
-                    'constraints' => [
-                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                        'id'     => '[0-9]+',
-                    ],
-                    'defaults' => [
-                        'controller' => MovieController::class,
-                        'action' => 'index',
-                    ],
-                ],
-            ],
-            'comment' => [
-                'type'    => Segment::class,
-                'options' => [
-                    'route'       => '/comment[/:action[/:id]]',
-                    'constraints' => [
-                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                        'id'     => '[0-9]+',
-                    ],
-                    'defaults' => [
-                        'controller' => CommentController::class,
-                        'action' => 'index',
-                    ],
-                ],
-            ],
+
         ],
     ],
 
     'controllers' => [
         'factories' => [
-            ActorController::class => ActorControllerFactory::class,
+            PeopleController::class => PeopleControllerFactory::class,
 
         ],
     ],
@@ -105,6 +68,18 @@ return [
         'template_path_stack' => [
             __DIR__ . '/../view',
         ],
+    ],
+
+    'form_elements' => [
+        'factories' => [
+
+        ],
+    ],
+
+    'service_manager' => [
+        'factories' => [
+            PeopleService::class => PeopleServiceFactory::class,
+        ]
     ],
 
 

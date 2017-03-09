@@ -16,6 +16,6 @@ return [
     'Application',
     'DoctrineModule',
     'DoctrineORMModule',
-    'MoviesData',
     'ZendDeveloperTools',
+    'MoviesData',
 ];

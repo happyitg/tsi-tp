@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Class Movie
- * @package MoviesData\Model
+ * @package moviesdata\Model
  * @ORM\Entity
  * @ORM\Table(name="movie")
  */
@@ -96,8 +96,8 @@ class Movie
     /**
      * @var int
      *
-     * @ORM\OneToOne(targetEntity="Poster", mappedBy="id")
-     *
+     * One movie has one poster
+     * @ORM\OneToOne(targetEntity="Poster", mappedBy="movie")
      */
     private $poster ;
 
