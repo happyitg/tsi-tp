@@ -9,10 +9,12 @@
 
 namespace MoviesData\Controller ;
 
-
 use MoviesData\Form\AddPeopleForm;
+use MoviesData\Form\AddSkillPeopleForm;
 use MoviesData\Form\EditPeopleForm;
+use MoviesData\Model\People;
 use MoviesData\Service\PeopleService;
+use Zend\Http\Request;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
@@ -35,21 +37,27 @@ class PeopleController extends AbstractActionController
     private $editPeopleForm;
 
     /**
+     * @var AddSkillPeopleForm
+     */
+    private $addSkillPeopleForm;
+
+    /**
      * PeopleController constructor.
      * @param PeopleService $peopleService
      * @param AddPeopleForm $addPeopleForm
      * @param EditPeopleForm $editPeopleForm
+     * @param AddSkillPeopleForm $addSkillPeopleForm
      */
-    public function __construct(PeopleService $peopleService, AddPeopleForm $addPeopleForm, EditPeopleForm $editPeopleForm)
+    public function __construct(PeopleService $peopleService, AddPeopleForm $addPeopleForm,
+                                EditPeopleForm $editPeopleForm, AddSkillPeopleForm $addSkillPeopleForm)
     {
-        /** @var PeopleService peopleService */
         $this->peopleService = $peopleService ;
 
-        /** @var AddPeopleForm addPeopleForm */
         $this->addPeopleForm = $addPeopleForm;
 
-        /** @var EditPeopleForm editPeopleForm */
         $this->editPeopleForm = $editPeopleForm;
+
+        $this->addSkillPeopleForm = $addSkillPeopleForm ;
 
     }
 
@@ -60,19 +68,82 @@ class PeopleController extends AbstractActionController
     {
 
         return new ViewModel([
-            'all_people' => $this->peopleService->selectAll()
+            'allPeople' => $this->peopleService->selectAll()
         ]);
     }
 
     /**
-     * @return ViewModel
+     * @return \Zend\Http\Response|ViewModel
      */
     public function addAction()
     {
-        // TODO : put the getRequest and do the check with calling the people Service
+        /** @var Request $getRequest */
+        $getRequest = $this->getRequest();
+
+        if($getRequest->isPost()) {
+
+            $dataObject = $getRequest->getPost() ;
+            $this->addPeopleForm->setData($dataObject);
+
+
+            if ($this->addPeopleForm->isValid()) {
+
+
+                // TODO: make the model to call the create
+                /** @var People $peopleModel */
+                $peopleModel = $this->addPeopleForm->getData();
+                $birthDate = $peopleModel->getBirthDate();
+                $peopleModel->setBirthDate(\DateTime::createFromFormat('Y-m-d', $birthDate));
+
+                $this->peopleService->insert($peopleModel);
+
+                return $this->redirect()->toRoute('people');
+            }
+
+        }
 
         return new ViewModel([
-            'form' => $this->addPeopleForm
+            'addPerson' => $this->addPeopleForm
+        ]);
+    }
+
+    public function editAction()
+    {
+        
+    }
+
+    public function deleteAction()
+    {
+
+    }
+
+    public function addSkillAction()
+    {
+        $peopleId = (int)$this->params('id_people');
+        $people = $this->peopleService->selectOne($peopleId);
+
+        if(!$people){
+            $this->redirect()->toRoute('people');
+        }
+
+        $this->addSkillPeopleForm->bind($people);
+
+        /** @var Request $request */
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            $this->addSkillPeopleForm->setData($request->getPost());
+            if ($this->addSkillPeopleForm->isValid()) {
+                /** @var People $people */
+                $people = $this->addSkillPeopleForm->getData();
+                $this->peopleService->update($people);
+
+                return $this->redirect()->toRoute('people');
+            }
+        }
+
+        return new ViewModel([
+            'addSkillPeopleForm' => $this->addSkillPeopleForm,
+            'people' => $people,
         ]);
     }
 

@@ -27,6 +27,11 @@ class PeopleRepository extends EntityRepository
             ->addSelect('mps')
             ->leftJoin('mps.movie', 'm')
             ->addSelect('m')
+            ->leftJoin('m.poster', 'poster')
+            ->addSelect('poster')
+            ->leftJoin('mps.skill', 'ms')
+            ->addSelect('ms')
+            ->orderBy('p.id', 'DESC')
             ->getQuery()
             ->getResult() ;
 
@@ -38,11 +43,13 @@ class PeopleRepository extends EntityRepository
      */
     public function getOneById(int $id)
     {
-        $query = $this->createQueryBuilder('people')
-            ->andWhere('people.id = :id')
+        $query = $this->createQueryBuilder('p')
+            ->leftJoin('p.skills', 's')
+            ->addSelect('s')
+            ->andWhere('p.id = :id')
             ->setParameter('id', $id)
             ->getQuery()
-            ->getResult();
+            ->getOneOrNullResult();
 
         return $query;
     }

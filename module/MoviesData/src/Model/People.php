@@ -10,6 +10,7 @@
 namespace MoviesData\Model ;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -66,7 +67,7 @@ class People
     private $moviePeopleSkill ;
 
     /**
-     * @var int
+     * @var Collection
      *
      * Many people have many skills
      * @ORM\ManyToMany(targetEntity="Skill")
@@ -77,7 +78,7 @@ class People
      *          @ORM\JoinColumn(name="people_id", referencedColumnName="id")
      *     },
      *     inverseJoinColumns={
-     *          @ORM\JoinColumn(name="skill_id", referencedColumnName="id", unique=true)
+     *          @ORM\JoinColumn(name="skill_id", referencedColumnName="id")
      *     }
      * )
      */
@@ -110,17 +111,30 @@ class People
     }
 
     /**
-     * @return ArrayCollection|int
+     * @return Collection
      */
     public function getSkills()
     {
         return $this->skills;
     }
 
+    public function addSkills(Collection $skills){
+        foreach ($skills as $skill) {
+            $this->skills->add($skill);
+        }
+    }
+
+    public function removeSkills(Collection $skills)
+    {
+        foreach ($skills as $skill) {
+            $this->skills->removeElement($skill);
+        }
+    }
+
     /**
      * @param $skills
      */
-    public function setSkills($skills)
+    public function setSkills(Collection $skills = null)
     {
         $this->skills = $skills;
     }

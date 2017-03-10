@@ -18,4 +18,5 @@ return [
     'DoctrineORMModule',
     'ZendDeveloperTools',
     'MoviesData',
+    'Zend\Form',
 ];

@@ -7,4 +7,73 @@ $this->headTitle($pageTitle);
 
 <?php
 /** @var \Zend\Form\Form $firstName */
+$firstName = $this->addPerson->get('people')->get('first_name');
+$firstName->setAttribute('class', 'form-horizontal');
+$firstName->setAttribute('placeholder', 'First Name');
 
+/** @var \Zend\Form\Form $lastName */
+$lastName = $this->addPerson->get('people')->get('last_name');
+$lastName->setAttribute('class', 'form-horizontal');
+$lastName->setAttribute('placeholder', 'Last Name');
+
+/** @var \Zend\Form\Form $birthDate */
+$birthDate = $this->addPerson->get('people')->get('birth_date');
+$birthDate->setAttribute('class', 'form-horizontal');
+$birthDate->setAttribute('placeholder', 'Birth Date');
+
+/** @var \Zend\Form\Form $gender */
+$gender = $this->addPerson->get('people')->get('gender');
+$gender->setAttribute('class', 'form-horizontal');
+$gender->setAttribute('placeholder', 'Gender');
+
+
+/** @var \Zend\Form\Form $skills */
+$skills = $this->addPerson->get('people')->get('skills');
+$skills->setAttribute('class', 'form-horizontal');
+
+/** @var \Zend\Form\Form $submit */
+$submit = $this->addPerson->get('submit');
+$submit->setAttribute('class', 'btn');
+$submit->setAttribute('action', $this->url('people', ['action' => 'add']));
+
+$this->addPerson->prepare();
+
+// TODO : understand this statement
+echo $this->form()->openTag($this->addPerson);
+?>
+
+<div class="form-group">
+    <?= $this->formLabel($firstName) ?> :
+    <?= $this->formElement($firstName) ?>
+    <?= $this->formElementErrors()->render($firstName, ['class' => 'help-block']) ?>
+</div>
+
+
+<div class="form-group">
+    <?= $this->formLabel($lastName) ?> :
+    <?= $this->formElement($lastName) ?>
+    <?= $this->formElementErrors()->render($lastName, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($birthDate) ?> :
+    <?= $this->formElement($birthDate) ?>
+    <?= $this->formElementErrors()->render($birthDate, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($gender) ?> : <br>
+    <?= $this->formElement($gender) ?>
+    <?= $this->formElementErrors()->render($gender, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($skills) ?> :
+    <?= $this->formElement($skills) ?>
+    <?= $this->formElementErrors()->render($skills, ['class' => 'help-block']) ?>
+</div>
+<?php
+
+echo $this->formSubmit($submit);
+echo $this->formHidden($this->addPerson->get('people')->get('id'));
+echo $this->form()->closeTag();

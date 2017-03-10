@@ -1,0 +1,31 @@
+<?php
+
+$pageTitle = "Add a new skill";
+$this->headTitle($pageTitle);
+?>
+<h1><?= $this->escapeHtml($pageTitle);?></h1>
+
+<?php
+/** @var \Zend\Form\Form $skills */
+$skills = $this->addSkillPeopleForm->get('people')->get('skills');
+$skills->setAttribute('class', 'form-horizontal');
+
+/** @var \Zend\Form\Form $submit */
+$submit = $this->addSkillPeopleForm->get('submit');
+$submit->setAttribute('class', 'btn');
+$submit->setAttribute('action', $this->url('people/add_skill', ['id_people' => $this->people->getId()]));
+
+$this->addSkillPeopleForm->prepare();
+
+echo $this->form()->openTag($this->addSkillPeopleForm);
+?>
+
+<div class="form-group">
+    <?= $this->formLabel($skills) ?> :
+    <?= $this->formElement($skills) ?>
+    <?= $this->formElementErrors()->render($skills, ['class' => 'help-block']) ?>
+</div>
+<?php
+
+echo $this->formSubmit($submit);
+echo $this->form()->closeTag();

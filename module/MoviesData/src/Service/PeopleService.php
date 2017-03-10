@@ -45,7 +45,9 @@ class PeopleService implements PeopleInterface
     public function insert(People $people): People
     {
         /** add a people into the Unit Of Work */
+
         $this->entityManager->persist($people);
+
 
         $this->entityManager->flush();
 

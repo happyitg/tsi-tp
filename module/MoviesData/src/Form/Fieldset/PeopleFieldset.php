@@ -13,7 +13,6 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping as ORM;
 use DoctrineModule\Form\Element\ObjectSelect;
 use DoctrineModule\Stdlib\Hydrator\DoctrineObject;
-use DoctrineORMModule\Service\DoctrineObjectHydratorFactory;
 use MoviesData\Model\People;
 use MoviesData\Model\Skill;
 use Zend\Filter\DateSelect;
@@ -31,7 +30,7 @@ use Zend\Validator\StringLength;
  * Class PeopleFieldset
  * @package MoviesData\Form\Fieldset
  * @ORM\Entity
- * @ORM\Table(name="People")
+ * @ORM\Table(name="people")
  */
 class PeopleFieldset extends Fieldset implements InputFilterProviderInterface
 {
@@ -102,7 +101,12 @@ class PeopleFieldset extends Fieldset implements InputFilterProviderInterface
                 'name' => 'gender',
                 'type' => Element\Radio::class,
                 'options' => [
-
+                    'label' => 'Gender',
+                    'options' => [
+                        'm' => 'Men',
+                        'f' => 'Women',
+                        't' => 'Other',
+                    ],
                 ]
             ]
         );
@@ -121,6 +125,9 @@ class PeopleFieldset extends Fieldset implements InputFilterProviderInterface
                     'empty_item_label' => '--',
                     'label' => 'Skill',
                 ],
+                'attributes' => [
+                    'multiple' => 'multiple',
+                ],
             ]
         );
 
@@ -136,6 +143,7 @@ class PeopleFieldset extends Fieldset implements InputFilterProviderInterface
             'id' => [
                 'required' => true,
             ],
+
             'first_name' => [
                 'required' => true,
                 'filters' => [
@@ -187,6 +195,7 @@ class PeopleFieldset extends Fieldset implements InputFilterProviderInterface
                 ],
                 'validator' => [
                     'name' => Date::class,
+
                 ]
             ],
 
@@ -203,9 +212,6 @@ class PeopleFieldset extends Fieldset implements InputFilterProviderInterface
                 'required' => true ,
             ],
 
-            'movie_people_skill' => [
-                'required' => false,
-            ],
         ];
     }
 

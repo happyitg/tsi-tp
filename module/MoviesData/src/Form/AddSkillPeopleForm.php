@@ -14,10 +14,10 @@ use Zend\Form\Element\Submit;
 use Zend\Form\Form;
 
 /**
- * Class AddPeopleForm
+ * Class AddSkillPeopleForm
  * @package MoviesData\Form
  */
-class AddPeopleForm extends Form
+class AddSkillPeopleForm extends Form
 {
     public function init()
     {
@@ -36,10 +36,7 @@ class AddPeopleForm extends Form
         $this->setValidationGroup(
             [
                 'people' => [
-                    'first_name',
-                    'last_name',
-                    'birth_date',
-                    'gender',
+
                     'skills',
                 ],
             ]
@@ -50,7 +47,7 @@ class AddPeopleForm extends Form
                 'name' => 'submit',
                 'type' => Submit::class,
                 'attributes' => [
-                    'value' => 'Create this person',
+                    'value' => 'Add a skill',
                     'id'    => 'submitbutton',
                 ],
             ]

@@ -6,9 +6,11 @@ $this->headTitle($pageTitle);
 <h1><?= $this->escapeHtml($pageTitle);?></h1>
 
 <a href="<?= $this->url('people',['action' => 'add'])?>">Add one people</a>
-<?php foreach ($this->all_people as $person){?>
+<?php foreach ($this->allPeople as $person){?>
     <?php /** @var \MoviesData\Model\People $person */ ?>
     <h2><?= $this->escapeHtml($person->getFirstName())?> <?= $this->escapeHtml($person->getLastName())?></h2>
+    <a href="<?= $this->url('people',['action' => 'edit'])?>">Edit</a> /
+    <a href="<?= $this->url('people',['action' => 'delete'])?>">Delete</a>
 
 
     <h4>Informations :</h4>
@@ -21,17 +23,19 @@ $this->headTitle($pageTitle);
         </li>
     </ul>
     <h4>Skill acquired : </h4>
+    <a href="<?= $this->url('people/add_skill',['id_people' => $person->getId()])?>">Add a skill</a>
     <?php foreach ($person->getSkills() as $skill){ ?>
         <?php /** @var \MoviesData\Model\Skill $skill */ ?>
     <ul>
         <li>
-            <?= $this->escapeHtml($skill->getName())?>
+            <?= $this->escapeHtml($skill->getName())?> (<a href="<?= $this->url('skill',['action' => 'edit'])?>">Delete</a>)
         </li>
     </ul>
     <?php
     }
     ?>
     <h4>Movies he was part of : </h4>
+    <a href="<?= $this->url('movie-people-skill',['action' => 'add'])?>">Add a movie for a specific skill</a><br><br>
     <?php foreach ($person->getMoviePeopleSkill() as $moviePeopleSkill){
             /** @var \MoviesData\Model\MoviePeopleSkill $moviePeopleSkill */
             /** @var \MoviesData\Model\Movie $movie */
@@ -41,7 +45,7 @@ $this->headTitle($pageTitle);
         ?>
     <ul>
         <li>
-           "<?= $this->escapeHtml($movie->getTitle()) ?>" as <?= $this->escapeHtml($skill->getName()) ?>
+           "<?= $this->escapeHtml($movie->getTitle()) ?>" as <?= $this->escapeHtml($skill->getName()) ?>(<a href="<?= $this->url('movie-people-skill',['action' => 'delete'])?>">Delete</a>)
 
         </li>
     </ul>

@@ -12,6 +12,7 @@ namespace MoviesData\Factory ;
 use Interop\Container\ContainerInterface;
 use MoviesData\Controller\PeopleController;
 use MoviesData\Form\AddPeopleForm;
+use MoviesData\Form\AddSkillPeopleForm;
 use MoviesData\Form\EditPeopleForm;
 use MoviesData\Service\PeopleService;
 use Zend\ServiceManager\Factory\FactoryInterface;
@@ -26,16 +27,19 @@ class PeopleControllerFactory implements FactoryInterface
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        /** @var  $peopleService */
+        /** @var PeopleService $peopleService */
         $peopleService = $container->get(PeopleService::class);
 
-        /** @var  $addPeopleForm */
+        /** @var AddPeopleForm $addPeopleForm */
         $addPeopleForm = $container->get('FormElementManager')->get(AddPeopleForm::class);
 
-        /** @var  $editPeopleForm */
+        /** @var EditPeopleForm $editPeopleForm */
         $editPeopleForm = $container->get('FormElementManager')->get(EditPeopleForm::class);
 
-        return new PeopleController($peopleService, $addPeopleForm, $editPeopleForm);
+        /** @var AddSkillPeopleForm $addSkillForm */
+        $addSkillForm = $container->get('FormElementManager')->get(AddSkillPeopleForm::class);
+
+        return new PeopleController($peopleService, $addPeopleForm, $editPeopleForm, $addSkillForm);
     }
 
 }
